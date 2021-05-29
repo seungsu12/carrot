@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link href="css/style.css?v=3" rel ="stylesheet" type="text/css">
+
+<style>
+
+#header_wrap{
+	margin : 0 auto 0 auto;
+	border : 1px solid black;
+	height: 120px;
+	display :grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	grid-template-rows: auto;
+	
+}	
+
+		
+
+.header_item{
+	border: 1px solid black;
+}
+
+.header_item:nth-child(1){
+	
+}
+
+
+
+</style>
+</head>
+
+
+
+<div id="header_wrap">
+	
+
+	
+	<div class="header_item">
+		<img src="/img/logo.jpg">
+	</div>
+	<div class="header_item">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="header_item">3</div>
+
+</div>
+
+
+
+</html>

@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link href="css/style.css?v=3" rel ="stylesheet" type="text/css">
+
+<style>
+
+#header_wrap{
+	margin : 0 auto 0 auto;
+	border : 1px solid black;
+	height: 120px;
+}	
+</style>
+</head>
+
+
+
+<div id="header_wrap">
+	
+	<div>
+	</div>
+	<div>
+	
+	</div>
+</div>
+
+
+
+</html>
