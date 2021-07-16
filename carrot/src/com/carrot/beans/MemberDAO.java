@@ -30,7 +30,6 @@ public class MemberDAO {
 		String year = vo.getBirthyy();
 		String month = vo.getBirthmm();
 		String day = vo.getBirthdd();
-		
 		Date birthday = Date.valueOf(year+"-"+month+"-"+day);
 		return birthday;
 	}

@@ -1,3 +1,5 @@
 INDEX VERSION 1.131
+/Users/seungsu/dev/java/carrot/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2511143136.index
+/carrot/src
 /Users/seungsu/dev/java/carrot/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3068279290.index
 /carrot/src

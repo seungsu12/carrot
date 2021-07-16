@@ -6,12 +6,19 @@ public class MemberVO {
 	private String name;
 	private String id;
 	private String pwd;
+	private String email;
 	private String phone_num;
 	private String birthyy;
 	private String birthmm;
 	private String birthdd;
 	private String birth;
-	
+
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getBirth() {
 		return birth;
 	}
