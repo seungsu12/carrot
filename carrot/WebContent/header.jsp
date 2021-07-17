@@ -20,8 +20,8 @@
 	<div class="header_item">
 		<div>
 			<ul>
-				<li> <a href="#">로그인</a>
-				<li> <a href="#">회원가입</a>
+				<li> <a href="login.jsp">로그인</a>
+				<li> <a href="signup.jsp">회원가입</a>
 				<li> <a href="#">이벤트</a>
 			</ul>
 		</div>
