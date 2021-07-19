@@ -5,8 +5,8 @@
     <fullyQualifiedTypeName name="java.sql.BatchUpdateException"/>
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
+    <fullyQualifiedTypeName name="com.carrot.beans.MemberDAO"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="javax.naming.NamingException"/>
     <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
-    <fullyQualifiedTypeName name="com.carrot.beans.MemberDAO"/>
 </qualifiedTypeNameHistroy>
