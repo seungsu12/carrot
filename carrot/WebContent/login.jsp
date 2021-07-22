@@ -7,62 +7,13 @@
 <title>login</title>
 <link href="css/style.css?v=7" rel="stylesheet" type="text/css">
 </head>
-<style>
-*{
-	box-sizing:border-box;
-}
-.login_title a{
-	text-decoration : none;
-	color : black;
-}
-.login_wrapper{
-	display: flex;
-	flex-direction : column;
-	align-items: center;
-	margin : 0 auto 0 auto;
-	
-}
-.login_title{
-	font-size :68px;
-	margin : 100px 0 60px 0;
-}
-.login_box {
-	margin-bottom : 10px;
-	width: 420px;
-}
-.login_box input{
-	width: 420px;
-	padding:5px;
-	height : 45px;
-	font-size : 18px;
-	
-}
-.login_hr {
-	margin_top : 5px;
-}
-.login_list{
-	display: flex;
-    width: 300px;
-    align-items: center;
-    flex-direction: column;
-}
-.login_list a {
-	text-decoration :none;
-	color : grey;
-	font-size : 13px;
-}
-.login_list div span{
-	content : "|";
-}
-.login_hr{
- 	margin-top : 20px;
-}
-.login_list div{
-	display :felx;
-	justify-content : space-between;
-}
-
-</style>
+<script>
+	const user = '${user}';
+	if(user !=""){
+		alert("로그인 중입니다.");
+		location.href = "main.jsp";
+	}
+</script>
 <body>
 <!-- login_list '|' 삽입 아직 안함, 버튼 수정 안 -->
 

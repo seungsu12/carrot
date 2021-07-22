@@ -66,3 +66,6 @@
 	font-weight: bold;
 	font-size: 1.1em
 }
+.footer_icon_img img{
+	border-radius : 50% 50%;
+}

@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<link href="css/style.css?v=3" rel ="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
-
 <footer>
 <div class="footer_wrapper">
 	<div class="footer_blank"></div>
@@ -12,7 +8,7 @@
 	<div class="footer_blank"></div>
 	<div class="footer_header">
 		
-				<div>
+				<div class="footer_icon_img">
 					<img class="logo" src="img/logo2.png">
 				</div>
 				<div class="footer_icon">			
@@ -31,9 +27,7 @@
 		<div style="margin-top : 5px">
 			(주)에어샵
 		</div>
-		
-		
-		
+	
 	</div>
 	<div class="footer_items">
 		<div class="footer_items_title">

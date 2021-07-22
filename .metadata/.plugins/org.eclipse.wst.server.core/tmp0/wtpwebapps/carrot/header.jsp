@@ -20,15 +20,17 @@
 	<div class="header_item">
 		<div>
 			<ul>
-				<li> <a href="login.jsp">로그인</a>
+				<li> <a href="login.jsp" id="header_title_login">로그인</a>
 				<li> <a href="signup.jsp">회원가입</a>
 				<li> <a href="#">이벤트</a>
 			</ul>
 		</div>
 	</div>
+	
 	<div class="header_item"></div>
+	
 	<div class="header_item">
-		<a href="header.jsp">AirSHOP</a>
+		<a href="main.jsp">AirSHOP</a>
 	</div>
 	
 	<div class="header_item">

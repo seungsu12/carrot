@@ -1,5 +1,7 @@
 package com.carrot.beans;
 
+import java.sql.Date;
+
 public class MemberVO {
 
 	private String member_id;
@@ -8,12 +10,20 @@ public class MemberVO {
 	private String pwd;
 	private String email;
 	private String phone_num;
+	private Date birth;
+	private Date time;
+	private String gender;
 	private String birthyy;
 	private String birthmm;
 	private String birthdd;
-	private String birth;
-	private String gender;
 
+	
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
 	public String getGender() {
 		return gender;
 	}
@@ -26,11 +36,11 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getBirth() {
+	public Date getBirth() {
 		return birth;
 	}
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setBirth(Date date) {
+		this.birth = date;
 	}
 	public String getBirthyy() {
 		return birthyy;

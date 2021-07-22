@@ -9,28 +9,15 @@
 		<%
 			request.setCharacterEncoding("utf-8");
 		%>
-		
-
 		 <jsp:useBean id="memberVO" class="com.carrot.beans.MemberVO"/>
 		<jsp:setProperty property="*" name="memberVO"/> 
-		<%-- <jsp:useBean id="testVO" class="com.carrot.beans.TestVO"/>
-		<jsp:setProperty property="*" name="testVO"/> --%>
 		
-		<%
-			
+		<%		
 			MemberDAO dao = MemberDAO.getInstance();
-			
- 			   dao.insertMember(memberVO);  
-			/* dao.insertTest("11"); */
-		
+ 			   dao.insertMember(memberVO);  	
 		%>
 	
-			
-		
-		<script >
-			
+		<script >	
 		 	alert("회원가입을 축하드립니다.");
 		 	window.location.href = '${cpath}/main.jsp';
 		</script>
-		
-		

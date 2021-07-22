@@ -10,8 +10,7 @@
 }
 
 #join_top{
-	display: float;
-	
+	display: float;	
 	margin:0;
 	text-align:center;
 	height : 80px;
@@ -24,10 +23,11 @@
 	
 }
 
+
 .main{
 	
 	margin : 0 auto 0 auto;
-	height : 800px;
+	
 	display : flex;
 	align-items : center;
 	justify-content : center;
@@ -39,6 +39,7 @@
 .main_img{
 	width : 1220px;
 	height: 720px;
+	
 }
 .main_text{
 	font-size: 3.7em;

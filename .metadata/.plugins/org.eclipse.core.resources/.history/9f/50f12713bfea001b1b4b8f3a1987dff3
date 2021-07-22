@@ -1,0 +1,118 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>products</title>
+</head>
+<link href="css/style.css?v=2" rel="stylesheet" type="text/css" />
+<style>
+.item_wrapper{
+	margin-top : 4em;
+	display :grid;
+	grid-template-columns : 1fr 1fr 1fr;
+	grid-column-gap : 2em;
+	grid-row-gap : 2em;
+}
+.product_item_textarea{
+
+	display :flex;
+	justify-content: space-between;
+}
+.product_item img{
+	width :380px;
+	height : 380px;
+}
+.product_item_textarea_right span{
+	display :block;
+}
+.product_item{
+	width: 60%
+}
+.product_main{
+	display :grid;
+	grid-template-columns : 1fr 6fr;
+	
+}
+</style>
+<body>
+<jsp:include page="header.jsp" flush ="false"/>
+
+<div class ="main product_main" style="border :1px solid black">
+<div class="product_aside">
+	<ul>
+		<li>치수</li>
+		<li>여성</li>
+		<li>브랜드</li>
+		<li>색상</li>
+	</ul>
+
+</div>
+	<div class="item_wrapper">
+	
+		<div class="product_item">
+			<img src="img/shoe_1.png" alt="상품" />
+			<div class ="product_item_textarea">
+				<div class="product_item_textarea_right">
+					<span>나이키 에어맥스</span>
+					<span>남성 신발 라이프 스타일</span>
+				</div>
+				<div>
+					<span>15,900원</span>
+				</div>
+			</div>
+		</div>
+		<div class="product_item">
+			<img src="img/shoe_2.png" alt="상품" />
+			<div class ="product_item_textarea">
+				<div class="product_item_textarea_right">
+					<span>나이키 에어맥스</span>
+					<span>남성 신발 라이프 스타일</span>
+				</div>
+				<div>
+					<span>15,900원</span>
+				</div>
+			</div>
+		</div>
+		<div class="product_item">
+			<img src="img/shoe_3.png" alt="상품" />
+			<div class ="product_item_textarea">
+				<div class="product_item_textarea_right">
+					<span>나이키 에어맥스</span>
+					<span>남성 신발 라이프 스타일</span>
+				</div>
+				<div>
+					<span>15,900원</span>
+				</div>
+			</div>
+		</div>
+		<div class="product_item">
+			<img src="img/shoe_4.png" alt="상품" />
+			<div class ="product_item_textarea">
+				<div class="product_item_textarea_right">
+					<span>나이키 에어맥스</span>
+					<span>남성 신발 라이프 스타일</span>
+				</div>
+				<div>
+					<span>15,900원</span>
+				</div>
+			</div>
+		</div>
+		<div class="product_item"></div>
+		<div class="product_item"></div>
+		<div class="product_item"></div>
+		<div class="product_item"></div>
+		<div class="product_item"></div>
+	
+	</div>
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

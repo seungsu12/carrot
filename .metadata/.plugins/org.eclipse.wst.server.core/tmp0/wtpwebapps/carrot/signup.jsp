@@ -100,9 +100,7 @@
 				<input type="button" id="sign_submit" value="가입하기">
 			</div>
 		</div>
-			<div>
-				<button onclick='now()'>hi</button>
-			</div>
+			
 		</form>
 		
 	</div>
@@ -137,7 +135,7 @@ sign_id.addEventListener('blur', () => {
 		xhr.onload = function(){
 			if(xhr.status ==200 && xhr.readyState ==4){		
 				console.log("Ajax 통신성공");
-				let response = xhr.responseXML;
+
 				let idchk = xhr.responseText;
 				idchk.replace(" ","");
 				
@@ -238,10 +236,7 @@ pwd2.addEventListener('blur',() => {
 		}
 		
 	});
-	function now(){
-	console.log(document.getElementById('sign_phone_num').value);
-	console.log(document.getElementById('sign_phone_num'));
-		
-	}
+	
+	
 </script>
 </html> 

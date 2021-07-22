@@ -1,0 +1,59 @@
+
+
+#title{
+	font-size : 1px;
+	
+}
+
+#h1{
+	border : 1px solid black;	
+}
+
+#join_top{
+	display: float;	
+	margin:0;
+	text-align:center;
+	height : 80px;
+}
+
+#mid{
+	
+	margin : 0 auto 0 auto;
+	max-width:1000px;
+	
+}
+
+
+.main{
+	
+	margin : 0 auto 0 auto;
+	height : 800px;
+	display : flex;
+	align-items : center;
+	justify-content : center;
+	
+	
+	
+	
+}
+.main_img{
+	width : 1220px;
+	height: 720px;
+	
+}
+.main_text{
+	font-size: 3.7em;
+	
+	position: relative;
+	bottom : 180px;
+	font-family : fantasy;
+	
+	
+}
+.main_wrapper{
+	width: 1600px;
+	height: 800px;
+	display: flex;
+	align-items: center;
+	justify-content : space-between
+}
