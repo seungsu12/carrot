@@ -1,0 +1,50 @@
+package com.carrot.beans;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import jsp.util.DBConnection;
+
+public class ShoesDAO {
+	
+	private static ShoesDAO instance;
+	
+	
+	public static ShoesDAO getInstance() {
+		if(instance== null) {
+			instance = new ShoesDAO();
+		}
+		return instance;
+	}
+	
+	public ShoesVO[] getShoesList() {
+		
+		ShoesVO[] list = null;
+		
+		StringBuffer sql;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int i =0;
+		try {
+			sql.append("select * from shoes");
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+			pstmt = (PreparedStatement)conn.prepareStatement(sql.toString());
+			rs =pstmt.executeQuery();
+			while(rs.next()) {
+				ShoesVO vo = null;
+				vo.setShoes_id(rs.getInt("shoes_id"));
+				
+			}
+		}
+		
+		
+		
+		
+		
+		return list; 
+	}
+	
+	
+}

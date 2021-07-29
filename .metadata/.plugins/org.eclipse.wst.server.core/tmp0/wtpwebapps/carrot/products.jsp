@@ -1,6 +1,10 @@
+<%@page import="com.carrot.beans.ShoesVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.carrot.beans.ShoesDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,11 +34,12 @@
 	display :block;
 }
 .product_item{
-	width: 80%
+	width: 380px;
+	color :black;
 }
 .product_main{
 	display :grid;
-	grid-template-columns : 1fr 6fr;
+	grid-template-columns : 1.1fr 6fr;
 	
 }
 .product_title_wrapper{
@@ -64,13 +69,14 @@
 	padding : 0 1em 0 1em; 
 }
 .product_aside_sizebox{
+	
 	display :grid;
 	grid-template-columns :1fr 1fr 1fr;
 	grid-row-gap : 0.3em;
 	width :100%;
 }
 .product_aside_size{
-	border : 1px solid grey;
+	border :1px solid grey;
 	border-radius : 0.6em;
 	color : grey;
 	width :4em;
@@ -84,7 +90,16 @@
 .product_aside_title{
 	margin :1em;
 }
+
 </style>
+
+<% 
+	request.setCharacterEncoding("utf-8");	
+	ShoesDAO dao = ShoesDAO.getInstance();
+	ArrayList<ShoesVO> list = dao.getShoesList();
+	request.setAttribute("list", list);
+%>
+
 <body>
 <jsp:include page="header.jsp" flush ="false"/>
 <div class="product_title_wrapper">
@@ -93,11 +108,11 @@
 		<div>필터</div>
 	</div>
 </div>
-<div class ="product_main" style="border :1px solid black">
+<div class ="product_main">
 <div class="product_aside">
 	<div class="center product_aside_title">신발 사이즈</div>
 	<div class="product_aside_sizebox">
-		<c:forEach var ="i" begin="220" end="290" step="5">
+		<c:forEach var ="i" begin="225" end="280" step="5">
 		<div class="product_aside_size center">${i}</div>
 		</c:forEach>
 	
@@ -105,64 +120,45 @@
 
 </div>
 	<div class="item_wrapper">
+		<c:forEach var="item" items="${list }">
+		<a href="shoes.jsp?id=${item.shoes_id }">
+		<div class="product_item">
+			<img src="${item.img }" alt="상품" />
+			<div class ="product_item_textarea">
+				<div class="product_item_textarea_right">
+					<span>${item.name }</span>
+					<span>${item.type }</span>
+				</div>
+				<div>
+					<span><fmt:formatNumber type="number" value="${item.price }"/></span>
+				</div>
+			</div>
+		</div>
+		</a>
+		</c:forEach>
 	
-		<div class="product_item">
-			<img src="img/shoe_1.png" alt="상품" />
-			<div class ="product_item_textarea">
-				<div class="product_item_textarea_right">
-					<span>나이키 에어맥스</span>
-					<span>남성 신발 라이프 스타일</span>
-				</div>
-				<div>
-					<span>15,900원</span>
-				</div>
-			</div>
-		</div>
-		<div class="product_item">
-			<img src="img/shoe_2.png" alt="상품" />
-			<div class ="product_item_textarea">
-				<div class="product_item_textarea_right">
-					<span>나이키 에어맥스</span>
-					<span>남성 신발 라이프 스타일</span>
-				</div>
-				<div>
-					<span>15,900원</span>
-				</div>
-			</div>
-		</div>
-		<div class="product_item">
-			<img src="img/shoe_3.png" alt="상품" />
-			<div class ="product_item_textarea">
-				<div class="product_item_textarea_right">
-					<span>나이키 에어맥스</span>
-					<span>남성 신발 라이프 스타일</span>
-				</div>
-				<div>
-					<span>15,900원</span>
-				</div>
-			</div>
-		</div>
-		<div class="product_item">
-			<img src="img/shoe_4.png" alt="상품" />
-			<div class ="product_item_textarea">
-				<div class="product_item_textarea_right">
-					<span>나이키 에어맥스</span>
-					<span>남성 신발 라이프 스타일</span>
-				</div>
-				<div>
-					<span>15,900원</span>
-				</div>
-			</div>
-		</div>
-		<div class="product_item"></div>
-		<div class="product_item"></div>
-		<div class="product_item"></div>
-		<div class="product_item"></div>
-		<div class="product_item"></div>
 	
 	</div>
 
 </div>
 <jsp:include page="footer.jsp"/>
+<script>
+	const btns =document.querySelectorAll(".product_aside_size");
+	
+	btns.forEach(function(btn){
+		btn.addEventListener('click',btnClick);
+	});
+	function btnClick(event){
+		const tar = event.target;
+		if(tar.style.background =="grey"){
+			tar.style.color = "grey";
+			tar.style.background ="white";
+		}
+		else{
+			tar.style.color ="white";
+			tar.style.background ="grey";
+		}
+	}
+</script>
 </body>
 </html>

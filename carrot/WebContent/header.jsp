@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
 <header>
 <div id="header_wrap">
@@ -45,7 +46,7 @@
 
 			</li>
 				
-			<li class="header_navybar"><a href="#">PRODUCTS</a></li>
+			<li class="header_navybar"><a href="products.jsp">PRODUCTS</a></li>
 			<li class="header_navybar"><a href="#">SUPPORT</a></li>
 		</ul>
 	</div>

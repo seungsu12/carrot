@@ -2,10 +2,10 @@
 	margin : 0 auto 0 auto;
 	height: 120px;
 	display :grid;
-	grid-template-columns: 0.6fr minmax(495px, 20%) minmax(495px,40%) minmax(390px ,25%) 0.6fr;
+	grid-template-columns: 0.6fr minmax(495px, 20%) minmax(495px,40%) minmax(450px ,27%) 0.6fr;
 	grid-template-rows : 1fr 2fr ;
 
-	
+
 }	
 a{
 	text-decoration: none;

@@ -1,16 +1,16 @@
 package com.carrot.beans;
 
 public class ShoesVO {
-	private String shoes_id;
+	private int shoes_id;
 	private String name;
 	private String price;
 	private String img;
-	private String size;
+	private String type;
 	
-	public String getShoes_id() {
+	public int getShoes_id() {
 		return shoes_id;
 	}
-	public void setShoes_id(String shoes_id) {
+	public void setShoes_id(int shoes_id) {
 		this.shoes_id = shoes_id;
 	}
 	public String getName() {
@@ -31,11 +31,11 @@ public class ShoesVO {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	public String getSize() {
-		return size;
+	public String getType() {
+		return type;
 	}
-	public void setSize(String size) {
-		this.size = size;
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }

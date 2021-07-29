@@ -4,13 +4,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Enumeration;
 import java.sql.Date;
 import javax.naming.NamingException;
+import javax.servlet.http.HttpServletRequest;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import javax.management.RuntimeErrorException;
 import javax.naming.*;
 import jsp.util.DBConnection;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.io.File;
 
 public class MemberDAO {
 	
@@ -25,7 +32,50 @@ public class MemberDAO {
 		
 		return instance;
 	}
-	
+	public void uploadImg(HttpServletRequest request) {
+		
+		MultipartRequest multi = null;
+		
+		// 파일의 크기 제한 // 100mb 크기제한
+		int sizeLimit = 100 * 1024 * 1024;
+		
+		//파일 저장위치 절대경로와 상대경로
+		String savePath = "/Users/seungsu/dev/java/carrot/carrot/WebContent/img";
+		
+		//파일 이름 변수
+		String fileName1 = null;
+		
+		//파일 타입 변수
+		String fileType ="";
+		
+		try {
+			// multi 객체를 생성하면서 파일을 해당 경로에 업로드 한다.
+			// 마지막 인자를 중복되는 이름이 존재할 경우 뒤에 1을 붙여서 저장하는 정책이다.
+			
+			multi = new MultipartRequest(request,savePath,sizeLimit,"utf-8", new DefaultFileRenamePolicy());
+			
+			// request.getParameter 대신에 multi.getParameter로 값을 받을 수 있다.
+			int id = Integer.parseInt(multi.getParameter("id"));
+			
+			// 첨부 파일의 이름을 얻어낸다.
+			Enumeration<?> files = multi.getFileNames();
+			
+			String file1 = (String)files.nextElement();
+			
+			System.out.println("저장위치 : "+ file1);
+			System.out.println(savePath);
+			
+			//정책을 하고 난 다음의 이름값을 가져온다. 중복되는 파일이 있다면 뒤에 1,2,3,4..을 붙인 이름을 할당한다.
+			fileName1 = multi.getFilesystemName(file1);
+			
+			//파일 타입 가져오기
+			fileType = multi.getContentType(file1);
+			System.out.println("파일 타입 : "+fileType);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	// 아이디 중복 체크 
 	
 	public int checkId(String id) throws SQLException, NamingException, ClassNotFoundException{

@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="shoes_image"/>
 			<item value="logo"/>
 			<item value="logo2"/>
 			<item value="margin-right"/>

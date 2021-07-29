@@ -8,6 +8,8 @@
 
 @import "login.css";
 
+@import "shoes.css";
+
 .center{
 	display:flex;
 	justify-content :center;
