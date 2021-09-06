@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+
+<%
+	request.setCharacterEncoding("utf-8");
+	
+
+%>
+<jsp:useBean id="review" class="com.carrot.beans.ReviewVO"/>
+<jsp:setProperty property="*" name="review"/>
+
+<h1>${review.shoes_id }</h1>
+</html>

@@ -1,0 +1,159 @@
+h1 {
+  font-family: "Baloo Tammudu 2", cursive;
+}
+ul {
+  list-style: none;
+  font-family: "Baloo Tammudu 2", cursive;
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #222;
+  &:hover {
+    color: red;
+  }
+}
+
+.nav {
+  display: flex;
+  margin-bottom: 100px;
+
+  .main-menu {
+    position: relative;
+    overflow: visible;
+
+    > a {
+      display: block;
+      position: relative;
+      margin: 0 10px;
+      border: 1px dotted #eee;
+      padding: 10px 40px 5px 10px;
+      line-height: 1;
+      transition: all 0.3s;
+
+      &.has-sub {
+        &::before,
+        &::after {
+          content: "";
+          width: 10px;
+          height: 2px;
+          display: block;
+          background: red;
+          position: absolute;
+          top: 13px;
+          right: 10px;
+          transition: transform 0.3s;
+        }
+        &::before {
+          margin-right: -3px;
+          transform: rotate(45deg);
+        }
+        &::after {
+          margin-right: 3px;
+          transform: rotate(-45deg);
+        }
+        &:hover::before {
+          transform: rotate(-45deg);
+        }
+        &:hover::after {
+          transform: rotate(45deg);
+        }
+      }
+    }
+    .sub-menu {
+      border: 1px dotted #eee;
+      border-width: 1px 1px 0 1px;
+      margin: 0 10px;
+      position: absolute;
+      top: 32px;
+      left: 0;
+      min-width:calc(100% - 20px);
+
+      a {
+        display: block;
+        border-bottom: 1px solid #eee;
+        line-height: 1;
+        padding: 15px 10px 0 10px;
+      }
+    }
+    &:hover {
+      .sub-menu {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#default {
+  .main-menu {
+    .sub-menu {
+      display: none;
+      transition: opacity 0.5s;
+    }
+    &:hover {
+      .sub-menu {
+        display: block;
+      }
+    }
+  }
+}
+
+#keyframe {
+  .main-menu {
+    .sub-menu {
+      display: none;
+      transform-origin: top center;
+      animation: menuAni 0.5s;
+    }
+    &:hover {
+      .sub-menu {
+        display: block;
+      }
+    }
+  }
+}
+
+@keyframes menuAni {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#visibility {
+  .main-menu {
+    .sub-menu {
+      visibility:hidden;
+      transform-origin: top center;
+      opacity: 0;
+      transition:all 0.5s;
+    }
+    &:hover {
+      .sub-menu {
+        visibility:visible;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#pointer {
+  .main-menu {
+    .sub-menu {
+      opacity: 0;
+      pointer-events:none;
+      transition:all 0.5s;
+    }
+    &:hover {
+      .sub-menu {
+        opacity: 1;
+        pointer-events:auto;
+      }
+    }
+  }
+}

@@ -34,7 +34,12 @@
  border-radius :0.2em;
  height : 40px; 
 }
-.shoes_size:hover{
+.zerosize{
+	background : #D8D8D8;
+	opacity : 0.2;
+	
+}
+.nonezerosize:hover{
 	background:grey;
 	color : white;
 }
@@ -121,12 +126,15 @@ input[type=number] {
 .review_star{
 	margin : 0.8em 0 0.8em 0;
 }
+
 .review_info_wrapper span{
 	color : grey;
 	font-size : 0.8em;
 	margin-left : 1em;	
 }
- 
+ .review_img{
+ 	height: 200px;
+ }
 .review_content{
 	margin : 1em 0 1em 0;
 }
@@ -134,3 +142,66 @@ input[type=number] {
 	width: 40%;
 	height :40%;
 }
+.shoes_review_hidden{
+	visibility :hidden;
+}
+.star{
+	width : 1rem;		
+}
+shoes_review_list_wrapper{
+	margin-top : 2rem;
+}
+._signup_wrapper{
+	display : none;
+    padding: 1rem;
+    margin-bottom : 2rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.review_word{
+	margin-right: 1rem;
+}
+
+.review_signup_title{
+	margin-bottom :1.5rem;
+	
+}
+.review_signup_title input{
+	
+	width:22rem;
+	height: 1.2rem;
+}
+.review_signup_star_wrapper{
+	display :flex;
+}
+.review_signup_star_wrapper2{
+	margin-left :0.4rem;
+	width:22rem;
+}
+.review_signup_content textarea{
+	resize :none;
+	width: 22rem;
+	height: 8rem;	
+}
+.review_signup_content span{
+	vertical-align : top;
+}
+.review_signup_img{
+	margin-top : 1rem;
+}
+.review_signup_img > input{
+	width: 22rem;
+}
+#review_button{
+	margin-top : 2rem;
+	background: beige;
+    width: 7rem;
+    height: 1.9rem;
+    border-radius: 0.5rem;
+}
+#review_button:hover{
+	background:lightslategray;
+	color:white;
+}
+

@@ -2,7 +2,7 @@ package com.carrot.beans;
 
 public class Shoes_sizeVO {
 	private String shoes_id;
-	private int s220;
+
 	private int s225;
 	private int s230;
 	private int s235;
@@ -15,8 +15,7 @@ public class Shoes_sizeVO {
 	private int s270;
 	private int s275;
 	private int s280;
-	private int s285;
-	private int s290;
+
 	
 	public String getShoes_id() {
 		return shoes_id;
@@ -24,12 +23,8 @@ public class Shoes_sizeVO {
 	public void setShoes_id(String shoes_id) {
 		this.shoes_id = shoes_id;
 	}
-	public int getS220() {
-		return s220;
-	}
-	public void setS220(int s220) {
-		this.s220 = s220;
-	}
+
+	
 	public int getS225() {
 		return s225;
 	}
@@ -102,17 +97,7 @@ public class Shoes_sizeVO {
 	public void setS280(int s280) {
 		this.s280 = s280;
 	}
-	public int getS285() {
-		return s285;
-	}
-	public void setS285(int s285) {
-		this.s285 = s285;
-	}
-	public int getS290() {
-		return s290;
-	}
-	public void setS290(int s290) {
-		this.s290 = s290;
-	}
+
+	
 	
 }

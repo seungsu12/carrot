@@ -1,0 +1,54 @@
+<%@page import="java.util.Enumeration"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.carrot.beans.ShoesDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<jsp:useBean id="review" class="com.carrot.beans.ReviewVO"/>
+<jsp:setProperty property="*" name="review"/>
+<script>
+	console.log('${review.name}')
+</script>
+<%
+	request.setCharacterEncoding("utf-8");
+	String path = request.getSession().getServletContext().getRealPath("img/review");
+	
+	int size = 1024 *1024 * 10;
+	String file ="";
+	String originalFile="";
+	
+	try{
+		MultipartRequest multi = new MultipartRequest(request,path,size,"UTF-8",new DefaultFileRenamePolicy());
+		
+		Enumeration<?> files = multi.getFileNames();
+		String str = (String)files.nextElement();
+		
+		file = multi.getFilesystemName(str);
+		
+	}catch(Exception e){
+		e.printStackTrace();
+	} 
+	
+	request.setAttribute("filename",file );
+	
+%>
+<jsp:setProperty property="img" name="review" value="${filename }"/>
+<%
+	ShoesDAO dao = ShoesDAO.getInstance();
+	/* dao.signReview(review); */
+	System.out.println(review.getImg());
+%>
+<script>
+	alert('${filename}');
+</script>
+<h1>${review.shoes_id }</h1> 
+
+</html>
