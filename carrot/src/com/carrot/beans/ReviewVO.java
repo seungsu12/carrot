@@ -5,28 +5,29 @@ import java.sql.Date;
 public class ReviewVO {
 
 	
-	private String shoes_id;
-	private String member_id;
+	private int shoes_id;
+	private int member_id;
 	private String title;
 	private String content;
 	private String name;
 	private String star;
 	private String img;
-	private Date registdate;
 	private String shoes_size;
+	private Date registdate;
 	
 	
 	
-	public String getShoes_id() {
+	
+	public int getShoes_id() {
 		return shoes_id;
 	}
-	public void setShoes_id(String shoes_id) {
+	public void setShoes_id(int shoes_id) {
 		this.shoes_id = shoes_id;
 	}
-	public String getMember_id() {
+	public int getMember_id() {
 		return member_id;
 	}
-	public void setMember_id(String member_id) {
+	public void setMember_id(int member_id) {
 		this.member_id = member_id;
 	}
 	public String getTitle() {

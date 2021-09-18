@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@page import="com.carrot.beans.ReviewVO"%>
 <%@page import="com.carrot.beans.Shoes_size"%>
 <%@page import="com.carrot.beans.ShoesDAO"%>
@@ -9,6 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -16,53 +18,60 @@
 <link href="css/style.css?v=2" rel="stylesheet" type="text/css" />
 </head>
 
-<%
-	/* 	String id = request.getParameter("id"); */
-String id = "2";
-ShoesDAO dao = ShoesDAO.getInstance();
-ShoesVO vo = new ShoesVO();
-ArrayList<Shoes_size> sizevo = new ArrayList<Shoes_size>();
-ArrayList<ReviewVO> review = new ArrayList<ReviewVO>();
-
-vo = dao.getShoesOne(id);
-sizevo = dao.getSizeList(id);
-review = dao.getReviewList(id);
-request.setAttribute("review", review);
-request.setAttribute("sizevo", sizevo);
-request.setAttribute("item", vo);
-%>
+	<%
+	String id = request.getParameter("id");
+	ShoesDAO dao = ShoesDAO.getInstance();
+	ShoesVO vo = new ShoesVO();
+	ArrayList<Shoes_size> sizevo = new ArrayList<Shoes_size>();
+	ArrayList<ReviewVO> review = new ArrayList<ReviewVO>();
+	vo = dao.getShoesOne(id);
+	sizevo = dao.getSizeList(id);
+	review = dao.getReviewList(id);
+	
+	request.setAttribute("review", review);
+	request.setAttribute("sizevo", sizevo);
+	request.setAttribute("item", vo);
+	%>
 <script>
-document.title = '${item.name}';
-
-
-function count_up(){
-	let count =document.getElementById('shoes_count');
-	count.value= parseInt(count.value) + 1;
-	count_check();
-}
-function count_down(){
-	let count = document.getElementById('shoes_count');
-	count.value = parseInt(count.value) - 1 ;
-	count_check();
-}
-function count_check(){
-	let count = document.getElementById('shoes_count');
-	let icon = document.getElementById('minus_icon');
+	document.title = '${item.name}';
+	
+	
+	function count_up(){
+		let count =document.getElementById('shoes_count');
+		count.value= parseInt(count.value) + 1;
+		count_check();
+	}
+	function count_down(){
+		let count = document.getElementById('shoes_count');
+		count.value = parseInt(count.value) - 1 ;
+		count_check();
+	}
+	function count_check(){
+		let count = document.getElementById('shoes_count');
+		let icon = document.getElementById('minus_icon');
+			
+		if(count.value == 1){
+			console.log(icon);
+			icon.disabled =true;
+		}
+		else{
+		icon.disabled =false;		
+		}
 		
-	if(count.value == 1){
-		console.log(icon);
-		icon.disabled =true;
+	}	
+	function size_check(){
+		const size = document.querySelector('.checked_size');
+		const input_size = document.querySelector('input_size');
+		if(size == undefined){
+			alert('size 선택을 해주세요.');
+			event.preventDefault();
+			
+		}
+		else{
+			input_size.value=size.innerText;			
+		}
+		
 	}
-	else{
-	icon.disabled =false;		
-	}
-	
-}
-
-function size_check(list,sizevo){
-	
-}
-
 </script>
 <body onload="count_check()">
 	<jsp:include page="header.jsp" flush="false" />
@@ -82,41 +91,46 @@ function size_check(list,sizevo){
 						원
 					</div>
 				</div>
-				<div class="shoes_name">${item.type }</div>
-				<div class="shoes_size_warpper">
-					<div class="shoes_size_title">사이즈 선택</div>
-					<div class="shoes_size_list">
-						<c:forEach var="i" items="${sizevo }" varStatus="status">
-							<c:choose>
-								<c:when test="${i.count > 0 }">
-									<div class="shoes_size center nonezerosize">${i.name }</div>
-								</c:when>
-								<c:otherwise>
-									<div class="shoes_size center zerosize">${i.name}</div>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
+				<form id="shoessize_form">
+					<input type="hidden" name="member_id" value="1">
+					<input type="hidden" name="sheos_id" value="${item.shoes_id }">
+					<input type="hidden" id="input_size" name="size" value="">
+					<div class="shoes_name">${item.type }</div>
+					<div class="shoes_size_warpper">
+						<div class="shoes_size_title">사이즈 선택</div>
+						<div class="shoes_size_list">
+							<c:forEach var="i" items="${sizevo }" varStatus="status">
+								<c:choose>
+									<c:when test="${i.count > 0 }">
+										<div class="shoes_size center nonezerosize">${i.name }</div>
+									</c:when>
+									<c:otherwise>
+										<div class="shoes_size center zerosize">${i.name}</div>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</div>
 					</div>
-				</div>
-
-				<div class="shoes_count_wrapper">
-					<span>수량</span> <input id="shoes_count" type="number" name="count"
-						value="1">
-					<button onclick="count_down()" id="minus_icon">
-						<i class="fas fa-minus"></i>
-					</button>
-					<button onclick="count_up()" id="plus_icon">
-						<i class="fas fa-plus"></i>
-					</button>
-				</div>
+	
+					<div class="shoes_count_wrapper">
+						<span>수량</span> <input id="shoes_count" type="number" name="count"
+							value="1">
+						<button onclick="count_down()" id="minus_icon">
+							<i class="fas fa-minus"></i>
+						</button>
+						<button onclick="count_up()" id="plus_icon">
+							<i class="fas fa-plus"></i>
+						</button>
+					</div>
+				</form>
 				<hr>
 				<div class="shoes_button_wrapper center">
 					<div>
-						<button class="shoes_buy_button">바로구매</button>
+						<input type="submit" form="shoessize_form" class="shoes_buy_button" formaction="test.jsp" value="바로구매" onclick='size_check()'>
 					</div>
 					<div class="shoes_button_wrapper2">
-						<div class="shoes_etc_button center">장바구니</div>
-						<div class="shoes_etc_button center">위시리스트</div>
+						<button class="shoes_etc_button center">장바구니</button>
+						<button class="shoes_etc_button center">위시리스트</button>
 					</div>
 				</div>
 				<hr style="margin: 1em 0 1.3em 0">
@@ -130,24 +144,29 @@ function size_check(list,sizevo){
 							</div>
 						</div>
 					</div>
+					<div class="shoes_review_hidden">
 						<div class="shoes_review_write">
 							<span class="review_signup_button">리뷰 작성하기</span>
 						</div>
-					<div class="shoes_review_hidden">
 						<div class="review_signup_wrapper">
 							<form action="signup_review.jsp" method="post" enctype="multipart/form-data">
 								<input type="hidden" name="shoes_id" value= "${item.shoes_id }">
 								<input type="hidden" name="member_id"  value="1">
 								<input type="hidden" name="name" value="${item.name }">
+								<input type="hidden" name="shoes_size" value="270">
+								<input type="hidden" id="star_count" name="star" value="0">
+								
 								<div class="review_signup_title">
 									<span class="review_word">제목</span>
-									<input type="text" name="title">
+									<input type="text" name="title" required>
 								</div>
+								
 								<div class="review_signup_content">
 									<span class="review_word">내용</span>
-									<textarea name="content" rows="4" cols="20">
+									<textarea name="content"rows="4" cols="20" required="required">
 									</textarea>
 								</div>
+								
 								<div class="review_signup_star_wrapper">
 									<span class="review_word">
 										평점
@@ -158,12 +177,14 @@ function size_check(list,sizevo){
 										</c:forEach>
 									</div>
 								</div>
+								
 								<div class="review_signup_img">
 									<span class="review_word">
 										이미지
 									</span>
 									<input type="file" name="img" id="review_img" accept="image/*">
 								</div>
+								
 								<div class="center">
 									<input id="review_button" type="submit" value= "등록">
 								</div>
@@ -209,10 +230,12 @@ function size_check(list,sizevo){
 	function checking(target){
 		target.style.background= "white";
 		target.style.color ="black";
+		target.classList.add('checked_size');
 	}
 	function nocheking(target){
 		target.style.background="grey";
 		target.style.color ="white";
+		
 	}
 		
 	btns.forEach(function(btn){
@@ -229,6 +252,7 @@ function size_check(list,sizevo){
 			btns.forEach(function(target){
 				target.style.background="white";
 				target.style.color ="black";
+				target.classList.remove('checked_size');
 			});
 			nocheking(tar);
 				
@@ -252,12 +276,13 @@ function size_check(list,sizevo){
 	
 	review_icon.addEventListener('click', () =>{
 		if(review_icon.classList.contains("fa-chevron-down")){
-			review_wrapper.style.visibility = 'visible';
+			review_wrapper.style.display = "block";
 			review_icon.classList.replace('fa-chevron-down','fa-chevron-up');
 			
 		}
 		else{
-			review_wrapper.style.visibility= 'hidden';
+			review_wrapper.style.visibility= 'none';
+			document.querySelector('.review_signup_wrapper').style.display="none";
 			review_icon.classList.replace('fa-chevron-up','fa-chevron-down');
 		}
 	});
@@ -265,7 +290,7 @@ function size_check(list,sizevo){
 	//review_singup_star 함수
 	
 	const review_signup_star = document.querySelectorAll('.singup_review_star');
-	
+	const star_count = document.getElementById('star_count');
 	review_signup_star.forEach(function(star){
 		
 		star.addEventListener('click',(star)=> {
@@ -277,6 +302,7 @@ function size_check(list,sizevo){
 			i= i+1;
 				
 			}
+			star_count.value =index;
 		});
 	});
 	

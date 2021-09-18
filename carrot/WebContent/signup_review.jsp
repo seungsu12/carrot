@@ -1,3 +1,4 @@
+<%@page import="com.carrot.beans.ReviewVO"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
@@ -11,52 +12,61 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%
-	request.setCharacterEncoding("utf-8");
-	System.out.println(request.getAttribute("name"));
-%>
-<jsp:useBean id="review" class="com.carrot.beans.ReviewVO" scope="request" >
-<jsp:setProperty name="review" property="name"/>
-<jsp:getProperty property="name" name="review"/>
-<jsp:getProperty property="title" name="review"/>
-</jsp:useBean>
+
+
 <%
 	
-	/* String path = request.getSession().getServletContext().getRealPath("img/review");
+	request.setCharacterEncoding("utf-8");
+	String path = "/Users/seungsu/dev/java/carrot/carrot/WebContent/img/review"; 
 	
 	int size = 1024 *1024 * 10;
+	
+	ShoesDAO dao = null;			
 	String file ="";
 	String originalFile="";
 	MultipartRequest multi = null;
+	ReviewVO vo = new ReviewVO();
+	int result;
 	try{
 		multi = new MultipartRequest(request,path,size,"UTF-8",new DefaultFileRenamePolicy());
+		Enumeration<?> files = multi.getFileNames(); 
+		String str = (String)files.nextElement(); 		
+		file = multi.getFilesystemName(str); 
 		
-		Enumeration<?> files = multi.getFileNames();
-		String str = (String)files.nextElement();
+		int id =Integer.parseInt(multi.getParameter("shoes_id"));
 		
-		file = multi.getFilesystemName(str);
+		vo.setMember_id(Integer.parseInt(multi.getParameter("member_id")));
+		vo.setShoes_id(id);
+		vo.setStar(multi.getParameter("star"));
+		vo.setName(multi.getParameter("name")); 
+		vo.setTitle(multi.getParameter("title"));
+		vo.setContent(multi.getParameter("content"));
+		vo.setImg(file);
+		vo.setShoes_size(multi.getParameter("shoes_size"));
 		
+		dao = ShoesDAO.getInstance();
+		result =dao.signReview(vo);
+		request.setAttribute("result",result);
+		request.setAttribute("id", id);
 	}catch(Exception e){
 		e.printStackTrace();
-	} 
-	
-	request.setAttribute("filename",file );	 */
+	}
 %>
-<%-- <jsp:setProperty property="img" name="review" value="${filename }"/> --%>
 
- 
+ <script>
+ 	if('${result}' == 0){
+ 		alert("리뷰 등록 실패.");
+ 	}
+ 	else{
+ 		alert("리뷰 등록 성공.");
+ 	}
+ 	document.location.href='shoes.jsp?id='+'${id}';
+ 	
+ </script>
+
+
+	
 	
 
-
-<%--  	System.out.println(review.getContent());
-	System.out.println(review.getMember_id());
-	System.out.println(review.getName());
-	System.out.println(review.getTitle());
-	System.out.println(review.getShoes_id());
-	
-	ShoesDAO dao = ShoesDAO.getInstance();
-	dao.signReview(review); 
-	
- --%>
 
 </html>

@@ -21,25 +21,27 @@ public class ShoesDAO {
 		}
 		return instance;
 	}
-	public void signReview(ReviewVO vo) throws SQLException,NamingException,ClassNotFoundException{
+	public int signReview(ReviewVO vo) throws SQLException,NamingException,ClassNotFoundException{
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		StringBuffer sql = new StringBuffer();
-		sql.append("insert into shoes_review values(?, ?, ?, ?, ?, ?, ?, ? ,default)");
+		int result =0;
+		sql.append("insert into shoes_review(shoes_id,member_id,title,content,name,img,shoes_size,star) values(?, ?, ?, ?, ?, ?, ?, ?)");
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
 			pstmt = (PreparedStatement)conn.prepareStatement(sql.toString());
-			pstmt.setString(1,vo.getShoes_id());
-			pstmt.setString(2,vo.getMember_id());
+			pstmt.setInt(1,vo.getShoes_id());
+			pstmt.setInt(2,vo.getMember_id());
 			pstmt.setString(3,vo.getTitle());
 			pstmt.setString(4,vo.getContent());
 			pstmt.setString(5,vo.getName());
 			pstmt.setString(6,vo.getImg());
 			pstmt.setString(7,vo.getShoes_size());
-			pstmt.setString(8,"1");
-			pstmt.executeQuery();
+			pstmt.setString(8,vo.getStar());
+			result =pstmt.executeUpdate();
+			conn.commit();
 			System.out.println("완료");
 		}catch(Exception sqle) {
 			System.out.println(sqle);
@@ -51,6 +53,7 @@ public class ShoesDAO {
 				throw new RuntimeException(e.getMessage());
 			}
 		}
+		return result;
 	}
 	public ArrayList<ReviewVO> getReviewList(String id) throws SQLException,NamingException,ClassNotFoundException{
 		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
@@ -68,8 +71,8 @@ public class ShoesDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ReviewVO vo = new ReviewVO();
-				vo.setMember_id(rs.getString("member_id"));
-				vo.setShoes_id(rs.getString("shoes_id"));
+				vo.setMember_id(rs.getInt("member_id"));
+				vo.setShoes_id(rs.getInt("shoes_id"));
 				vo.setContent(rs.getString("content"));
 				vo.setTitle(rs.getString("title"));
 				vo.setStar(rs.getString("star"));

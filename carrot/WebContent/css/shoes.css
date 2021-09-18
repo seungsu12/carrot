@@ -96,6 +96,11 @@ input[type=number] {
 	height: 55px;
 	font-size : 1.1em;
 }
+.shoes_buy_button:hover{
+	background:white;
+	color:black;
+	
+}
 .shoes_button_wrapper2{
 	display : flex;
 	justify-content : space-between;
@@ -105,9 +110,14 @@ input[type=number] {
 .shoes_etc_button{
 	border : 1px solid black;
 	border-radius : 1em;
+	font-size : 1em;
 	background : white;
 	width : 180px;
 	height: 45px;		
+}
+.shoes_etc_button:hover{
+	background :black;
+	color : white;
 }
 .shoes_review_title{
 	margin-bottom: 1.8em;
@@ -140,10 +150,10 @@ input[type=number] {
 }
 .review_img img{
 	width: 40%;
-	height :40%;
+	height :80%;
 }
 .shoes_review_hidden{
-	visibility :hidden;
+	display : none;
 }
 .star{
 	width : 1rem;		
@@ -151,7 +161,7 @@ input[type=number] {
 shoes_review_list_wrapper{
 	margin-top : 2rem;
 }
-._signup_wrapper{
+.review_signup_wrapper{
 	display : none;
     padding: 1rem;
     margin-bottom : 2rem;

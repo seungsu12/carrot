@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>주문하기</title>
+<link href="css/style.css?v=2" rel="stylesheet" type="text/css" />
+<style>
+div{
+ border : 1px solid black;
+}
+.order_form_wrapper{
+	padding : 5rem;
+}
+.order_title{
+	font-size : 2rem;
+	height: 5rem;
+	
+}
+.order_main{
+	display : flex;
+	flex-direction :column;
+}
+.order_form{
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	
+}
+.order_main_title span{
+	font-size : 1.2rem;
+	margin-right: 0.4rem;
+}
+.order_main_login{
+	border : 1px solid grey;
+	color : grey;
+	background : #F2F2F2;
+	width : 5rem;
+	height: 3rem;
+}
+</style>
+</head>
+<body>
+	
+	<div class="order_form_wrapper">
+		<div class="order_title center">
+			<span>주문결제</span>
+		</div>
+		<div class="order_form">
+			<div class="order_main">
+				<div class="order_main_title">
+					<span>주문고객</span>
+					<button class="order_main_login">로그인</button>
+				</div>
+				<div class="order_main_email_wrapper">
+					<label for="order_email">이메일</label><br>
+					<input id="order_eamil" type="email" name="email" placeholder="이메일">
+					
+				</div>
+			</div>
+			
+			<div class="order_aside">
+				<div class="order_aside_title">
+					주무내역
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</body>
+</html>

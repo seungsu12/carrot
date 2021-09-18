@@ -10,6 +10,8 @@
 
 @import "shoes.css";
 
+@import "orderform.css";
+
 .center{
 	display:flex;
 	justify-content :center;
