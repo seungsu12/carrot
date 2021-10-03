@@ -47,7 +47,7 @@
 					<button class="order_main_login">로그인</button>
 				</div>
 				<div class="order_form_content">
-					<jsp:include page="orderform_third.jsp"/>
+					<jsp:include page="order_form_third.jsp"/>
 				</div>
 			</div>
 			

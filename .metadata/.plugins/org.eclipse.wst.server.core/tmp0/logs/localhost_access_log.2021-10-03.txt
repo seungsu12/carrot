@@ -634,3 +634,14 @@
 0:0:0:0:0:0:0:1 - - [03/Oct/2021:19:20:47 +0900] "GET /carrot/signup.jsp HTTP/1.1" 200 6343
 0:0:0:0:0:0:0:1 - - [03/Oct/2021:19:20:51 +0900] "GET /carrot/main.jsp HTTP/1.1" 200 4889
 0:0:0:0:0:0:0:1 - - [03/Oct/2021:19:21:08 +0900] "GET /carrot/products.jsp HTTP/1.1" 200 7617
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:19:35:32 +0900] "GET /carrot/shoes.jsp?id=2 HTTP/1.1" 200 17276
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:19:35:32 +0900] "GET /carrot/img/review/cat.jpg HTTP/1.1" 404 844
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:19:35:34 +0900] "POST /carrot/orderform.jsp HTTP/1.1" 200 5038
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:20:05:27 +0900] "POST /carrot/orderform.jsp HTTP/1.1" 200 5101
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:20:05:27 +0900] "GET /carrot/css/style.css?v=2 HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:20:05:38 +0900] "POST /carrot/orderform.jsp HTTP/1.1" 200 5101
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:20:06:14 +0900] "GET /carrot/main.jsp HTTP/1.1" 200 4889
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:20:06:17 +0900] "GET /carrot/products.jsp HTTP/1.1" 200 7617
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:20:07:22 +0900] "GET /carrot/shoes.jsp?id=2 HTTP/1.1" 200 17276
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:20:07:22 +0900] "GET /carrot/img/review/cat.jpg HTTP/1.1" 404 844
+0:0:0:0:0:0:0:1 - - [03/Oct/2021:20:07:24 +0900] "POST /carrot/orderform.jsp HTTP/1.1" 200 5101

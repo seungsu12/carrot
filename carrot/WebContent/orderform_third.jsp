@@ -24,6 +24,11 @@
     	justify-content: center;
     	align-items: center;
 	}
+	.pay_list div:hover{
+		background :grey;
+		color :white;
+	}
+	
 	.order_form_third_button{
 		margin-top :2.3rem;
 		font-size : 1.1rem;
