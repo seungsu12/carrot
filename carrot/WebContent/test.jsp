@@ -9,17 +9,13 @@
 <body>
 
 
-<form action="signup_review.jsp" method="post" >
 
-<input type="number" name="shoes_id" value= "1">
-<input type="number" name="member_id"  value="1">
-<input type="text" name="name" value="블루택시">
-<input type="text" name="title">
+<%
+	System.out.println("member_id :"+request.getParameter("member_id"));
+	System.out.println("sheos_id :"+request.getParameter("shoes_id"));
+	System.out.println("size : "+request.getParameter("size"));
+	System.out.println("count : "+request.getParameter("count"));
 
-
-<input type="submit" value="전송">
-
-
-</form>
+%>
 </body>
 </html>

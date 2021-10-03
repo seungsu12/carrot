@@ -13,6 +13,7 @@
 	flex-direction :column;
 }
 .order_form{
+	padding-left:10rem;
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	
@@ -47,13 +48,19 @@
 }
 
 .order_main_input input{
+	display: block;
 	margin-top : 1rem;
+	margin-bottom : 0.5rem;
 	width: 80%;
     height: 2rem;
     padding: 1rem;
     font-size: 0.9rem;
 }
-
+.order_main_input span{
+	margin-left : 0.5rem;
+	color : red;
+	font-size : 0.8rem;
+}
 .order_main_provision_title{
 	display:flex;
 	justify-content : space-between;
@@ -67,7 +74,7 @@
 	border : 1px solid grey;
 }
 
-.order_submit_wrapper input{
+.order_submit_wrapper button{
 	width : 100%;
 	height: 3rem;
 	font-size : 1rem;
@@ -114,7 +121,10 @@
 	background:#DF7401;
 	color : white;
 }
-
+.order_submit_button{
+	opacity : 0.6;
+	pointer-events : none;
+}
 .order_aside_bottom{
 	margin : 1.5rem;
 	border-top : 1px solid gray;
@@ -142,3 +152,18 @@
 .order_aside_bottom_text::first-letter{
 	color : black;
 }
+.nav_title{
+	position:relative;
+	bottom: 1rem;
+}
+.nav_title_logo a{
+	position : relative;
+	top : 2rem;
+	left :1rem;
+	font-size: 3rem;
+	text-decoration : none;
+	color : black;
+}
+
+
+

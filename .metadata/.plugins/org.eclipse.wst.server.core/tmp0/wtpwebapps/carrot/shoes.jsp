@@ -36,6 +36,8 @@
 	document.title = '${item.name}';
 	
 	
+	
+	// 수량 카운터 더하기 빼기, 체크함수
 	function count_up(){
 		let count =document.getElementById('shoes_count');
 		count.value= parseInt(count.value) + 1;
@@ -55,13 +57,14 @@
 			icon.disabled =true;
 		}
 		else{
-		icon.disabled =false;		
+			icon.disabled =false;		
 		}
 		
-	}	
-	function size_check(){
+	}
+	// form 전송시 size를 input에 저장
+	function input_size_check(){
 		const size = document.querySelector('.checked_size');
-		const input_size = document.querySelector('input_size');
+		const input_size = document.getElementById('input_size');
 		if(size == undefined){
 			alert('size 선택을 해주세요.');
 			event.preventDefault();
@@ -72,6 +75,20 @@
 		}
 		
 	}
+	//form 전송시 count를 input에 저장
+	function input_count_check(){
+		const check = document.getElementById('input_count');
+		check.value = document.getElementById('shoes_count').value;
+		
+	}
+	
+	//form 전송시 수량 체크
+	
+	function available_count_check(str){
+		
+		fetch
+	}
+	
 </script>
 <body onload="count_check()">
 	<jsp:include page="header.jsp" flush="false" />
@@ -91,10 +108,11 @@
 						원
 					</div>
 				</div>
-				<form id="shoessize_form">
+				<form id="shoessize_form" method="post">
 					<input type="hidden" name="member_id" value="1">
-					<input type="hidden" name="sheos_id" value="${item.shoes_id }">
+					<input type="hidden" name="shoes_id" value="${item.shoes_id }">
 					<input type="hidden" id="input_size" name="size" value="">
+					<input type="hidden" id="input_count" name="count">
 					<div class="shoes_name">${item.type }</div>
 					<div class="shoes_size_warpper">
 						<div class="shoes_size_title">사이즈 선택</div>
@@ -111,7 +129,7 @@
 							</c:forEach>
 						</div>
 					</div>
-	
+				</form>
 					<div class="shoes_count_wrapper">
 						<span>수량</span> <input id="shoes_count" type="number" name="count"
 							value="1">
@@ -122,11 +140,11 @@
 							<i class="fas fa-plus"></i>
 						</button>
 					</div>
-				</form>
+				
 				<hr>
 				<div class="shoes_button_wrapper center">
 					<div>
-						<input type="submit" form="shoessize_form" class="shoes_buy_button" formaction="test.jsp" value="바로구매" onclick='size_check()'>
+						<input type="submit" form="shoessize_form" class="shoes_buy_button" formaction="orderform.jsp" value="바로구매" onclick="input_size_check();input_count_check()">
 					</div>
 					<div class="shoes_button_wrapper2">
 						<button class="shoes_etc_button center">장바구니</button>
@@ -230,19 +248,21 @@
 	function checking(target){
 		target.style.background= "white";
 		target.style.color ="black";
-		target.classList.add('checked_size');
 	}
 	function nocheking(target){
 		target.style.background="grey";
 		target.style.color ="white";
+		target.classList.add("checked_size");
 		
 	}
-		
+	
+	// size button 함수
 	btns.forEach(function(btn){
 		btn.addEventListener('click',btnClick);
 	});
 	
 	function btnClick(event){
+		
 		const tar = event.target;
 		
 		if(tar.style.background == "grey"){
@@ -261,12 +281,12 @@
 	}
 
 	// 수량 카운터
-	let count =document.getElementById('shoes_count')
+	/* let count =document.getElementById('shoes_count')
 	count.addEventListener('blur', () => {
 	if(count.value < 1){
 		count.value =1;
 	}
-	});
+	}); */
 	
 	// review icon click 함수
 	
@@ -274,20 +294,20 @@
 	const review_icon_wrapper = document.querySelector('.shoes_updown_icon');
 	const review_wrapper = document.querySelector('.shoes_review_hidden');
 	
-	review_icon.addEventListener('click', () =>{
+	review_icon.addEventListener('click', () => {
 		if(review_icon.classList.contains("fa-chevron-down")){
 			review_wrapper.style.display = "block";
 			review_icon.classList.replace('fa-chevron-down','fa-chevron-up');
 			
 		}
 		else{
-			review_wrapper.style.visibility= 'none';
+			review_wrapper.style.display= 'none'; 
 			document.querySelector('.review_signup_wrapper').style.display="none";
 			review_icon.classList.replace('fa-chevron-up','fa-chevron-down');
 		}
 	});
 	
-	//review_singup_star 함수
+	//review_signup_star 함수
 	
 	const review_signup_star = document.querySelectorAll('.singup_review_star');
 	const star_count = document.getElementById('star_count');

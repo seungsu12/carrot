@@ -5,7 +5,14 @@ public class orderVO {
 		private int member_id;
 		private int shoes_id;
 		private String size;
+		private int count; 
 		
+		public int getCount() {
+			return count;
+		}
+		public void setCount(int count) {
+			this.count = count;
+		}
 		public int getMember_id() {
 			return member_id;
 		}

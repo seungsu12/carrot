@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<style>
+
+	.pay_list{
+		display : flex;
+		width : 50%;
+	}
+	.py_list div{
+		border : 1px solid grey;
+		width: 70%;
+	}
+</style>
+<div class="order_form_third_wrapper">
+
+	<div class="order_form_third_title">
+		결제수단선택
+	</div>
+	<div class="pay_list">
+		<div>
+			카카오페이
+		</div>
+		<div>
+			payco
+		</div>
+		<div>
+			NaverPay
+		</div>
+		<div>
+			실시간계좌이체
+		</div>
+	</div>
+</div>
+</html>

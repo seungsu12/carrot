@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+
+	<div class="order_form_second_wrapper">
+		<div class="deliver_title">
+			배송지 정보
+		</div>
+		<div class="">
+			<div>
+				<span>받으시는 분</span>
+				<div>
+					<input type="text" placeholder="이름">
+				</div>
+			</div>
+			<div>
+				<span>연락처</span>
+				<div>
+					<input type="text" placeholder="-없이 입력">
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</body>
+</html>

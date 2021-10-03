@@ -5,14 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.naming.NamingException;
-
 import jsp.util.DBConnection;
+
 
 public class ShoesDAO {
 	
+	
+	
 	private static ShoesDAO instance;
+	
 	
 	
 	public static ShoesDAO getInstance() {
@@ -20,6 +22,40 @@ public class ShoesDAO {
 			instance = new ShoesDAO();
 		}
 		return instance;
+	}
+	
+	public boolean checkInputCount(String shoes_id, String size,int count) throws SQLException,NamingException,ClassNotFoundException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		size = "s"+size;
+		int size_count=0;
+		StringBuffer sql = new StringBuffer();
+		sql.append("select ? from shoes_size where shoes_id = ?");
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+			pstmt =(PreparedStatement)conn.prepareStatement(sql.toString());
+			pstmt.setString(1,size);
+			pstmt.setString(2,shoes_id);
+			rs =pstmt.executeQuery();
+			rs.next();
+			size_count = rs.getInt(size);
+		}catch(NamingException | SQLException sqle) {
+			System.out.println(sqle);
+		}finally {
+			try {
+			if(pstmt!= null) {pstmt.close(); pstmt = null;}
+			if(conn!=null) {conn.close(); conn = null;}
+			if(rs!=null) {rs.close(); rs =null;}
+		}catch(Exception e) {
+			throw new RuntimeException(e.getMessage());
+		
+		}
+		 
+	}
+		return size_count <count ? false : true;
+		
 	}
 	public int signReview(ReviewVO vo) throws SQLException,NamingException,ClassNotFoundException{
 		
@@ -42,7 +78,7 @@ public class ShoesDAO {
 			pstmt.setString(8,vo.getStar());
 			result =pstmt.executeUpdate();
 			conn.commit();
-			System.out.println("완료");
+			
 		}catch(Exception sqle) {
 			System.out.println(sqle);
 		}finally {
@@ -139,6 +175,7 @@ public class ShoesDAO {
 		
 	}
 	public ShoesVO getShoesOne(String id) throws SQLException,NamingException,ClassNotFoundException {
+		
 		ShoesVO result = new ShoesVO();
 		StringBuffer sql  = new StringBuffer();
 		Connection conn = null;
@@ -152,7 +189,7 @@ public class ShoesDAO {
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			rs.next();
-			result.setShoes_id(Integer.parseInt(id));
+			result.setShoes_id(rs.getInt("shoes_id"));
 			result.setName(rs.getString("name"));
 			result.setPrice(rs.getString("price"));
 			result.setType(rs.getString("type"));
@@ -196,7 +233,7 @@ public class ShoesDAO {
 				vo.setPrice(rs.getString("price"));
 				vo.setType(rs.getString("type"));
 				vo.setImg(rs.getString("img"));
-				System.out.println(vo.getName());
+				
 				list.add(vo);
 			}
 		}catch(NamingException | SQLException sqle) {

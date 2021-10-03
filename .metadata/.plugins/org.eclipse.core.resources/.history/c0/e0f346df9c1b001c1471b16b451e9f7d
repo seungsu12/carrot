@@ -1,0 +1,8 @@
+package com.carrot.controller;
+
+import javax.servlet.http.HttpServlet;
+
+
+public class Countcheck extends HttpServlet{
+
+}
