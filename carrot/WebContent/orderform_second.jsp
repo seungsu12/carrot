@@ -81,54 +81,118 @@
 		text-align : center;
 		
 	}
+	
+	.order_member_info{
+		font-size : 0.8rem;
+		display: flex;
+		align-items : center;
+		justify-content: end;
+		height:3rem;
+		border-top :1px solid grey;
+		border-bottom :1px solid grey;
+		margin-top : 1rem;
+	}
+	.order_member_info div{
+		margin-left: 0.5rem;
+	}
+	.order_member_info2{
+		display :none;
+		padding-left :1rem;
+		padding-top :1rem;
+		padding-bottom :1rem;
+		margin-top :1rem;
+		border-top: 1px solid grey;
+   		border-bottom: 1px solid grey;
+		
+	}
+	.order_member_info2 input{
+		padding : 0.5rem;
+		width : 14rem;
+	}
+	.order_member_correction_button{
+		margin-left : 2rem;
+		height :100%;
+		width : 5rem;
+		font-size : 1rem;
+	}
+	.order_member_input_wrapper{
+		display: flex;
+		flex-direction :column;
+		row-gap : 0.4rem;
+	}
+	.order_member_info2 i{
+		float : right
+	}
+	.order_member_info2 div:nth-child(3){
+		align-self:center;
+		width: 100%;
+	}
+	
 </style>
 
 
 
 	<div class="order_form_second_wrapper">
+		<div class="order_member_info long">
+			<div class="order_member_email">pon02129@naver.com</div>
+			<div class="order_member_phone">010-9092-6951</div>
+			<div class="order_member_open_button"><i class="fas fa-plus open_info"></i></div>
+		</div>
+		<div class="order_member_info2 long">
+			<div class="order_member_input_wrapper">
+				<div><input type="text" value="pon02120@lnaver.com"></div>
+				<div><input type="text" value="01090926951"></div>
+			</div>
+			<div><button class="order_member_correction_button">수정</button></div>
+			<div><i class="fas fa-minus close_info"></i></div>
+		</div>
 		<div class="deliver_title">
 			배송지 정보
 		</div>
-		<div class="deliver_content_first">
-			<div class="deliver_content_firstblock">
-				<span>받으시는 분</span>
-				<div >
-					<input type="text" placeholder="이름">
+		<form action="${pageContext.request.contextPath }/orderform" method="post">
+			<input type="hidden" name="orderform_type" value="2">
+		
+			<div class="deliver_content_first">
+				<div class="deliver_content_firstblock">
+					<span>받으시는 분</span>
+					<div >
+						<input type="text" placeholder="이름">
+					</div>
+				</div>
+				<div class="deliver_content_firstblock">
+					<span>연락처</span>
+					<div>
+						<input type="text" placeholder="-없이 입력">
+					</div>
+				</div>
+				
+			</div>
+			<div class="deliver_content_second">
+				<span>배송주소</span>
+				<div class="deliver_content_addr">
+					<input type="text" id="order_address">
+					<button onclick="sample4_execDaumPostcode()">검색</button>
 				</div>
 			</div>
-			<div class="deliver_content_firstblock">
-				<span>연락처</span>
-				<div>
-					<input type="text" placeholder="-없이 입력">
-				</div>
+			<div class="deliver_extra_addr_wrapper">
+				<input type="text" id="detail_delivery" placeholder="나머지 주소 입력">
 			</div>
 			
-		</div>
-		<div class="deliver_content_second">
-			<span>배송주소</span>
-			<div class="deliver_content_addr">
-				<input type="text" id="order_address">
-				<button onclick="sample4_execDaumPostcode()">검색</button>
+			<div class="addr_option_wrapper">
+				<select name="" id="direct_input_button" onchange='direct_input_event(this.value)'>
+					<option value="" selected disabled>배송메모를 선택하세요</option>
+					<option value="contact">배송시 연락 부탁드립니다.</option>
+					<option value="door">문 앞에두어주세요</option>
+					<option  id="" value="direct">직접입력</option>
+					
+				</select>
+				<input type="text" id="hide_input" placeholder="배송메모를 입력하여 주세요.">
 			</div>
-		</div>
-		<div class="deliver_extra_addr_wrapper">
-			<input type="text" id="detail_delivery" placeholder="나머지 주소 입력">
-		</div>
-		
-		<div class="addr_option_wrapper">
-			<select name="" id="direct_input_button" onchange='direct_input_event(this.value)'>
-				<option value="" selected disabled>배송메모를 선택하세요</option>
-				<option value="contact">배송시 연락 부탁드립니다.</option>
-				<option value="door">문 앞에두어주세요</option>
-				<option  id="" value="direct">직접입력</option>
-				
-			</select>
-			<input type="text" id="hide_input" placeholder="배송메모를 입력하여 주세요.">
-		</div>
-		<div class="long">
-			<button class="order_form_second_button">다음 단계 진행</button>
-		</div>
+			<div class="long">
+				<button class="order_form_second_button" type="submit">다음 단계 진행</button>
+			</div>
 
+		</form>
 	</div>
 	<script>
 	const direct_input_button = document.getElementById('direct_input_button');
@@ -154,5 +218,21 @@
             } 
         }).open();
     }
+
+	const origin_wrap = document.querySelector('.order_member_info');
+	const second_wrap = document.querySelector('.order_member_info2');
+	
+	document.querySelector('.open_info').addEventListener('click',() =>{
+		origin_wrap.style.display = 'none';
+		second_wrap.style.display = 'flex';
+	});
+	
+	document.querySelector('.close_info').addEventListener('click', () =>{
+		origin_wrap.style.display = 'flex';
+		second_wrap.style.display = 'none';
+	});
+	
+
+
 	</script>
 </html>

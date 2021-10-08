@@ -1,0 +1,44 @@
+package com.carrot.url;
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+import com.carrot.beans.ShoesDAO;
+
+@WebServlet("/orderform")
+public class OrderServlet extends HttpServlet{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public void init(ServletConfig config)throws ServletException{
+		System.out.println("init 실행");
+	}
+	
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException{
+		
+		req.setCharacterEncoding("utf-8");
+		
+		
+		RequestDispatcher rd = req.getRequestDispatcher("test.jsp");
+		rd.forward(req, res);
+	}
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException{
+		req.setCharacterEncoding("utf-8");
+		String[] pageList = String["orderform_first","orderform_second","orderform_third"];
+		
+		ShoesDAO dao = ShoesDAO.getInstance();
+		
+		
+		
+		RequestDispatcher rd = req.getRequestDispatcher("orderform.jsp");
+		rd.forward(req, res);
+	}
+}

@@ -2,11 +2,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
 
+		 <form id="orderform_first" method="post"> 
+			<input type="hidden" name="orderform_type" value="1">
 				<div class="order_main_input_wrapper order_main_content">
 					<div class="order_main_input">
 						<label for="order_email">이메일</label><br>
@@ -19,6 +17,7 @@
 						<span class="order_inform_text order_phone_inform_text"></span>
 					</div>
 				</div>
+		</form>		
 				<div class="order_main_provision order_main_content">
 					<div class="order_main_provision_title">
 						<span>이용약관</span>
@@ -80,12 +79,64 @@
 						</div>
 					</div>
 					<div class="order_checkbox order_main_content">
-						<input id="order_checkbox" type="checkbox" value="#">
+						<input id="order_checkbox" type="checkbox" value="#" onchange="agree_button_check()">
 						<label for="order_checkbox">비회원 개인정보 수집 정보동의</label>
 					</div>
 					<div class="order_submit_wrapper order_main_content">
-						<button id ="button_event" class="order_submit_button" onclick="check_email();check_pnum()">다음단계 진행</button>
+						<button form="orderform_first"formaction="#" id ="button_event" class="order_submit_button" onclick="return check_email();">다음단계 진행</button>
 					</div>
+			<script>
+				const first_button  = document.querySelector('.order_submit_button');
+				const agree_box = document.getElementById('order_checkbox');
+				
+				function agree_button_check(){
+					console.log('click');
+					if(agree_box.checked){
+						first_button.classList.remove("order_submit_button")
+						first_button.classList.add("order_submit_button_checked");
+					}
+					else{
+						first_button.classList.remove("order_submit_button_checked");
+						first_button.classList.add("order_submit_button");
+					}
+				}
+				first_button.addEventListener('click',(event)=> {
+					console.log("check_pnum 실행");
+					const input = document.getElementById('order_phone');
+					const text = document.querySelector('.order_phone_inform_text');
+					
+					if(input.value == ''){
+						text.innerHTML = '필수입력 항목입니다';
+						
+						event.preventDefault();
+					}
+					else{
+						text.innerHTML ='';
+						
+					}
+				});
 			
-</body>
+				first_button.addEventListener('click',(event) => {
+					
+					const input = document.querySelector('.order_email');
+					const text = document.querySelector('.order_email_inform_text');
+				    let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+					
+				     if (regExp.test(input.value)){
+				    	 text.innerHTML='';
+						
+					}
+				     else if(input.value == ''){ 
+				    	 text.innerHTML = '필수입력 항목입니다';
+						event.preventDefault();
+				     } 
+				     
+					 else{
+						 text.innerHTML='이메일 형식이 아닙니다.';
+							event.preventDefault();
+
+					 }
+				});
+			</script>
+
 </html>

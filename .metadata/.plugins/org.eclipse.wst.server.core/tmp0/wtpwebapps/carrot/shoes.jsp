@@ -84,10 +84,6 @@
 	
 	//form 전송시 수량 체크
 	
-	function available_count_check(str){
-		
-		fetch
-	}
 	
 </script>
 <body onload="count_check()">
@@ -144,7 +140,7 @@
 				<hr>
 				<div class="shoes_button_wrapper center">
 					<div>
-						<input type="submit" form="shoessize_form" class="shoes_buy_button" formaction="orderform.jsp" value="바로구매" onclick="input_size_check();input_count_check()">
+						<input type="submit" form="shoessize_form" class="shoes_buy_button" formaction="${pageContext.request.contextPath}/orderform" value="바로구매" onclick="input_size_check();input_count_check()">
 					</div>
 					<div class="shoes_button_wrapper2">
 						<button class="shoes_etc_button center">장바구니</button>

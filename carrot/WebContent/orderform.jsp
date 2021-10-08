@@ -11,24 +11,20 @@
 <meta charset="UTF-8">
 <title>주문하기</title>
 <link href="css/style.css?v=2" rel="stylesheet" type="text/css" />
-<style>
-
-</style>
-	<jsp:useBean id="orderVO" class="com.carrot.beans.orderVO"/>
-	<jsp:setProperty property="*" name="orderVO"/> 
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>	
 </head>
-	<script>
-		function test(){
-			alert('test');
-		}
-	</script>
+	<jsp:useBean id="orderVO" class="com.carrot.beans.orderVO"/>
+	<jsp:setProperty property="*" name="orderVO"/>
 <%
+	/* orderVO orderVO = (orderVO)session.getAttribute("orderVO"); */
+	
 	ShoesDAO dao = ShoesDAO.getInstance();
-	ShoesVO vo = dao.getShoesOne(orderVO.getShoes_id()+"");
-	System.out.println("count : " + orderVO.getCount());
-	System.out.println("size : " +orderVO.getSize());
-	request.setAttribute("shoesVO", vo);
+	/* ShoesVO vo = dao.getShoesOne(orderVO.getShoes_id()+""); */
+	ShoesVO vo  = dao.getShoesOne("1");
+	session.setAttribute("shoesVO", vo);
+	
 %>
+
 <body>
 	<div class="nav_title">
 		<div class ="nav_title_logo">
@@ -45,9 +41,10 @@
 				<div class="order_main_title order_main_content">
 					<span>주문고객</span>
 					<button class="order_main_login">로그인</button>
+					
 				</div>
 				<div class="order_form_content">
-					<jsp:include page="orderform_third.jsp"/>
+					<jsp:include page="${form_number }"/>
 				</div>
 			</div>
 			
@@ -104,57 +101,10 @@
 				</div>
 			</div>
 		</div>
+		
 	
 	
 	</div>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script>
-		// submit button on off 함수
-		const submit_button = document.querySelector(".order_submit_button");
-		const button_event = document.getElementById("button_event");
-		const checkbox = document.getElementById('order_checkbox');
-		
-		
-		
-		
-		
-		function check_email(){
-			const input = document.querySelector('.order_email');
-			const text = document.querySelector('.order_email_inform_text');
-		    let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-			
-		     if (regExp.test(input.value)){
-		    	 text.innerHTML='';
-				return true;
-			}
-		     else if(input.value == ''){ 
-		    	 text.innerHTML = '필수입력 항목입니다';
-		    	 return false;
-		     } 
-		     
-			 else{
-				 text.innerHTML='이메일 형식이 아닙니다.';
-				 return false;
-			 }
-		}
-		function check_pnum(){
-			console.log("check_pnum 실행");
-			const input = document.getElementById('order_phone');
-			const text = document.querySelector('.order_phone_inform_text');
-			
-			if(input.value == ''){
-				text.innerHTML = '필수입력 항목입니다';
-			}
-			else{
-				text.innerHTML ='';
-				return true;
-			}
-		}
-		
-		/* button_event.addEventListener('click',check_pnum);
-		button_event.addEventListener('click',check_email); */
 
-
-	</script>
-</body>
 </html>
