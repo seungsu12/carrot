@@ -1,3 +1,4 @@
+<%@page import="com.carrot.beans.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -130,21 +131,26 @@
 	
 </style>
 
-
-
+	<%
+		/* MemberVO vo = (MemberVO)session.getAttribute("memberVO"); */
+		/* request.setAttribute("memberVO", vo); */
+	%>
+	<script>
+		
+	</script>
 	<div class="order_form_second_wrapper">
 		<div class="order_member_info long">
-			<div class="order_member_email">pon02129@naver.com</div>
-			<div class="order_member_phone">010-9092-6951</div>
+			<div class="order_member_email">${memberVO.email }</div>
+			<div class="order_member_phone">${memberVO.phone_num }</div>
 			<div class="order_member_open_button"><i class="fas fa-plus open_info"></i></div>
 		</div>
 		<div class="order_member_info2 long">
 			<div class="order_member_input_wrapper">
-				<div><input type="text" value="pon02120@lnaver.com"></div>
-				<div><input type="text" value="01090926951"></div>
+				<div><input id="second_member_email" type="text" value="${memberVO.email }"></div>
+				<div><input id="second_member_phone" type="text" value="${memberVO.phone_num }"></div>
 			</div>
 			<div><button class="order_member_correction_button">수정</button></div>
-			<div><i class="fas fa-minus close_info"></i></div>
+			<div class="order_member_close_button"><i class="fas fa-minus close_info"></i></div>
 		</div>
 		<div class="deliver_title">
 			배송지 정보
@@ -218,8 +224,8 @@
             } 
         }).open();
     }
-
-	const origin_wrap = document.querySelector('.order_member_info');
+	// 멤버 이메일,휴대폰 정보 디스플레이
+	/* const origin_wrap = document.querySelector('.order_member_info');
 	const second_wrap = document.querySelector('.order_member_info2');
 	
 	document.querySelector('.open_info').addEventListener('click',() =>{
@@ -230,9 +236,36 @@
 	document.querySelector('.close_info').addEventListener('click', () =>{
 		origin_wrap.style.display = 'flex';
 		second_wrap.style.display = 'none';
-	});
+	}); */
 	
-
+	// 멤버 정보 수정 비동기 통신
+	 function correction(){
+		const email = document.getElementById('second_member_email');
+		const phone = document.getElementById('second_member_phone');
+		const path = '${pageContext.request.contextPath}'+'/orderform';
+		const info = {email : email, phone : phone};
+		 fetch(path,{
+			method :'put',
+			body: JSON.stringify(info)
+		})
+		.then(res){
+			 if(res.status==200){
+				 
+				 
+			 }
+		 };
+		
+	} 
+	//member_info open,close
+	
+	document.querySelector('.order_member_open_button').addEventListener('click', ()=>{
+			document.querySelector('.order_member_info').style.display = 'none';
+			document.querySelector('.order_member_info2').style.display ='flex';
+		});
+ 	document.querySelector('.order_member_close_button').addEventListener('click',()=>{
+ 		document.querySelector('.order_member_info').style.display = 'flex';
+		document.querySelector('.order_member_info2').style.display ='none';	 		
+ 	})
 
 	</script>
 </html>

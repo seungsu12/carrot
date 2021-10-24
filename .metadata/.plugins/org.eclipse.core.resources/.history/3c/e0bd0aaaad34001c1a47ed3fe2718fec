@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	
+	
+</style>
+</head>
+<%
+	String path = request.getContextPath()+"/test2.jsp";
+	request.setAttribute("path", path);
+%>
+<script>
+	console.log(${path});
+	window.location.href = "/carrot/test2.jsp";	
+		
+		
+	
+
+</script>
+<body>
+
+	<div onclick="event4()">
+	</div>
+
+	<div onclick="event1()">
+	1
+		<p onclick="event2()">
+		2	
+			<a id="event1" href="https://www.naver.com">naver</a>		
+		</p>
+	
+	</div>
+</body>
+
+<script>
+	
+	
+	
+
+</script>
+</html>

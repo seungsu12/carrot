@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import javax.websocket.Session;
 
+import com.carrot.beans.MemberVO;
 import com.carrot.beans.ShoesDAO;
 import com.carrot.beans.orderVO;
 
@@ -37,7 +38,7 @@ public class OrderServlet extends HttpServlet{
 	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException{
-		System.out.println("post 실행");
+
 		req.setCharacterEncoding("utf-8");
 		String[] pageList = {"orderform_first.jsp","orderform_second.jsp","orderform_third.jsp"};
 		int index = 0;
@@ -47,8 +48,13 @@ public class OrderServlet extends HttpServlet{
 			index =  Integer.parseInt(req.getParameter("orderform_type"));
 		}
 		
-		if(index == 0) {
-			setOrderVO(req);
+
+		switch(index) {
+		case 0 : setOrderVO(req);
+				break;
+		case 1 : setInfo(req);
+				break;
+		
 		}
 	
 		req.setAttribute("form_number", pageList[index]);
@@ -69,5 +75,15 @@ public class OrderServlet extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("orderVO", vo);
+	}
+	
+	public void setInfo(HttpServletRequest req) {
+		
+		MemberVO vo = new MemberVO();
+		HttpSession session = req.getSession();
+		vo.setEmail(req.getParameter("email"));
+		vo.setPhone_num(req.getParameter("phone"));
+		session.setAttribute("memberVO", vo);
+				
 	}
 }

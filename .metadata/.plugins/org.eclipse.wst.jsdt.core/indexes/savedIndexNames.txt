@@ -2,7 +2,6 @@ INDEX VERSION 1.4+/Users/seungsu/dev/java/carrot/.metadata/.plugins/org.eclipse.
 2691832688.index
 3669765782.index
 3068279290.index
-3068279290.index
 3090845740.index
 2917507942.index
 922279839.index
